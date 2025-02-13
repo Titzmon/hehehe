@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super bí mậtttt 😉'</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Nhạc nền (ẩn) -->
+    <audio id="bg-music" autoplay loop oncanplaythrough="this.play()">
+        <source src="from-the-start-(meowfey).mp3" type="audio/mp3">
+    </audio>
+
+
+    <div id="container">
+        <div id="image-container"></div>
+        <div id="text-container">
+            <div id="question">Will you be my Valentine? :></div>
+            <div id="options">
+                <button id="yes-button" onclick="selectOption('yes')">Yeaaaa</button>
+                <button id="no-button" onclick="selectOption('no')">Naurrr</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Đảm bảo nhạc phát khi có bất kỳ tương tác nào nếu autoplay bị chặn
+        document.addEventListener("click", function () {
+            var audio = document.getElementById("bg-music");
+            if (audio.paused) {
+                audio.play();
+            }
+        });
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

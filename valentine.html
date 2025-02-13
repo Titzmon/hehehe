@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Valentine 💖</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+        <div id="image-container">
+            <img src="cat-heart.gif" alt="Happy Cat">
+        </div>
+        <div id="text-container">
+            <h2>Yayy! 💖 You're my super duper cutie Valentine! 🎉</h2>
+            <p>Wishing you a day filled with love and dorayaki! 💕</p>
+            <p>Click anywhere so the band starts to play :> hehe </p>
+        </div>
+    </div>
+
+    <!-- Nhạc nền -->
+    <audio id="bg-music" loop>
+        <source src="audio/from-the-start-(meowfey).mp3" type="audio/mp3">
+    </audio>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var audio = document.getElementById("bg-music");
+            audio.volume = 1.0;
+
+            // Thử phát nhạc ngay lập tức
+            let playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.warn("Autoplay có thể bị chặn, thử lại khi có tương tác.");
+                });
+            }
+        });
+
+        // Hiệu ứng trái tim bay
+        function createHearts() {
+            setInterval(() => {
+                let heart = document.createElement("div");
+                heart.innerHTML = "❤️";
+                heart.classList.add("heart");
+                document.body.appendChild(heart);
+
+                let startX = Math.random() * window.innerWidth;
+                let startY = window.innerHeight;
+                heart.style.left = startX + "px";
+                heart.style.top = startY + "px";
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 2000);
+            }, 300);
+        }
+
+        createHearts(); // Gọi hiệu ứng trái tim bay
+    </script>
+
+    <style>
+        /* CSS cơ bản */
+        body {
+            text-align: center;
+            background-color: #ffe6f2;
+            font-family: 'Sacramento', cursive;
+        }
+
+        #container {
+            margin-top: 50px;
+        }
+
+        #image-container img {
+            width: 200px;
+            height: auto;
+        }
+
+        h2 {
+            font-size: 32px;
+            color: #ff4081;
+        }
+
+        p {
+            font-size: 20px;
+            color: #ff66b2;
+        }
+
+        /* Hiệu ứng trái tim */
+        .heart {
+            position: fixed;
+            font-size: 24px;
+            animation: floatUp 2s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+
+    <script src="valentine.js"></script>
+
+</body>
+</html>
